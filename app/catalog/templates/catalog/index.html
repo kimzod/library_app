@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>장고 도서관</h3>
+<hr>
+<p class="text-muted">
+  방문해주셔서 감사합니다. 장고 도서관입니다.
+</p>
+{% endblock %}
+{% block sidebar %}
+<ul class="list-group mb-3">
+    <li class="list-group-item">
+        <h6 class="d-flex justify-content-between">
+            <span class="text-muted"><strong>모든 책</strong><small class="text-muted">(대출가능,예약 등)</small></span>
+            <span class="badge badge-pill badge-danger">{{ num_books }}</span>
+        </h6>
+    </li>
+    <li class="list-group-item">
+        <h6 class="d-flex justify-content-between">
+            <span class="text-muted"><strong>대출가능</strong></span>
+            <span class="badge badge-pill badge-secondary">{{ num_instances_available }}</span>
+        </h6>
+    </li>
+</ul>
+{% endblock %}
