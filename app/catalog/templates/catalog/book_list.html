@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>책 리스트</h3>
+<hr>
+{% if book_list %}
+<ul>
+    {% for book in book_list %}
+    <li>
+        <a href="{% url 'catalog:book-detail' book.id %}">{{ book.title }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<small class="text-muted">({{ book.author }})</small>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="text-muted">책이 도서관에 존재하지 않습니다.</p>
+{% endif %}
+<hr>
+<a class="btn btn-dark btn-sm" href="{% url 'catalog:index' %}">도서관 메인</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}<title>작가 리스트</title>{% endblock %}
+{% block content %}
+<h3>작가 리스트</h3>
+<hr>
+<ul>
+    {% for author in author_list %}
+    <li>
+        <a href="{% url 'catalog:author-detail' author.id %}">{{ author.first_name }}{{ author.last_name }}</a>&nbsp;&nbsp;
+        {% if author.date_of_birth %}
+            <small class="text-muted">({{ author.date_of_birth }} ~ )</small>
+        {% else %}
+            <small class="text-muted">(&nbsp;&nbsp;)</small>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+<hr>
+<a class="btn btn-dark btn-sm" href="{% url 'catalog:index' %}">도서관 메인</a>
+{% endblock %}

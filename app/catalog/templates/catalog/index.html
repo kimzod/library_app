@@ -10,7 +10,7 @@
 <ul class="list-group mb-3">
     <li class="list-group-item">
         <h6 class="d-flex justify-content-between">
-            <span class="text-muted"><strong>모든 책</strong><small class="text-muted">(대출가능,예약 등)</small></span>
+            <a href="{% url 'catalog:books' %}"><span class="text-muted"><strong>모든 책</strong><small class="text-muted">(대출가능,예약 등)</small></span></a>
             <span class="badge badge-pill badge-danger">{{ num_books }}</span>
         </h6>
     </li>
@@ -18,6 +18,12 @@
         <h6 class="d-flex justify-content-between">
             <span class="text-muted"><strong>대출가능</strong></span>
             <span class="badge badge-pill badge-secondary">{{ num_instances_available }}</span>
+        </h6>
+    </li>
+    <li class="list-group-item">
+        <h6 class="d-flex justify-content-between">
+            <a href="{% url 'catalog:authors' %}"><span class="text-muted"><strong>모든 작가들</strong></span></a>
+            <span class="badge badge-pill badge-secondary">{{ num_authors }}</span>
         </h6>
     </li>
 </ul>

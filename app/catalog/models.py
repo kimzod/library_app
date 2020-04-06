@@ -1,5 +1,4 @@
 import uuid
-
 from django.db import models
 from django.urls import reverse
 
@@ -25,7 +24,7 @@ class Author(models.Model):
     date_of_death = models.DateField('Died', null=True, blank=True)
 
     class Meta:
-        ordering = ['last_name', 'first_name']
+        ordering = ['first_name', 'last_name']
 
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
@@ -41,6 +40,7 @@ class Book(models.Model):
     isbn = models.CharField('ISBN', max_length=13, help_text='13자리 숫자 <a href="https://www.isbn-international.org'
                                                              '/content/what-isbn">ISBN 번호</a>')
     genre = models.ManyToManyField('Genre', help_text='이 책의 장르를 선택하세요')
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.title
@@ -50,8 +50,8 @@ class Book(models.Model):
 
     display_genre.short_description = 'Genre'
 
-    def get_absolute_url(self):
-        return reverse('book-detail', args=[str(self.id)])
+    # def get_absolute_url(self):
+    #     return reverse('book-detail', args=[str(self.id), ])
 
 
 class BookInstance(models.Model):
